@@ -10,7 +10,7 @@ const HeroSection = () => {
   const downloadResume = () => {
     // Create a dummy PDF download
     const link = document.createElement('a');
-    link.href = 'data:application/pdf;base64,JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PAovVGl0bGUgKEFrYXNoIFYgSiAtIFJlc3VtZSk...'; // This would be your actual resume
+    link.href = 'data:application/pdf;base64,JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PAovVGl0bGUgKEFrYXNoIFYgSiAtIFJlc3VtZSk...';
     link.download = 'Akash_VJ_Resume.pdf';
     document.body.appendChild(link);
     link.click();
@@ -19,11 +19,9 @@ const HeroSection = () => {
   };
 
   const connectWithMe = () => {
-    // Scroll to contact section
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Scroll to contact section (section index 4 now)
+    const event = new CustomEvent('navigateToSection', { detail: { section: 4 } });
+    window.dispatchEvent(event);
   };
 
   return (
@@ -53,7 +51,7 @@ const HeroSection = () => {
 
       {/* Hero Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* Instagram Avatar */}
+        {/* Avatar */}
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -61,9 +59,11 @@ const HeroSection = () => {
           className="mb-8"
         >
           <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1">
-            <div className="w-full h-full rounded-full bg-white flex items-center justify-center text-4xl font-bold text-gray-800">
-              AV
-            </div>
+            <img
+              src="/lovable-uploads/b87ac518-efec-4598-bf7f-4a96cd628ab6.png"
+              alt="Akash V J"
+              className="w-full h-full rounded-full object-cover"
+            />
           </div>
         </motion.div>
 

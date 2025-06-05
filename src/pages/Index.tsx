@@ -1,13 +1,13 @@
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Particles from 'react-tsparticles';
 import { loadSlim } from 'tsparticles-slim';
 import type { Container, Engine } from 'tsparticles-engine';
 import HeroSection from '@/components/portfolio/HeroSection';
-import AboutSection from '@/components/portfolio/AboutSection';
 import ProjectsSection from '@/components/portfolio/ProjectsSection';
 import SkillsSection from '@/components/portfolio/SkillsSection';
+import ResumeSection from '@/components/portfolio/ResumeSection';
 import ContactSection from '@/components/portfolio/ContactSection';
 import Navigation from '@/components/portfolio/Navigation';
 
@@ -22,11 +22,24 @@ const Index = () => {
     console.log("Particles loaded:", container);
   }, []);
 
+  // Listen for navigation events from other components
+  useEffect(() => {
+    const handleNavigateToSection = (event: CustomEvent) => {
+      setCurrentSection(event.detail.section);
+    };
+
+    window.addEventListener('navigateToSection', handleNavigateToSection as EventListener);
+    
+    return () => {
+      window.removeEventListener('navigateToSection', handleNavigateToSection as EventListener);
+    };
+  }, []);
+
   const sections = [
     { id: 'hero', component: HeroSection },
-    { id: 'about', component: AboutSection },
     { id: 'projects', component: ProjectsSection },
     { id: 'skills', component: SkillsSection },
+    { id: 'resume', component: ResumeSection },
     { id: 'contact', component: ContactSection },
   ];
 

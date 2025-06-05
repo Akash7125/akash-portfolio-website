@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Home, User, Code, Zap, Mail } from 'lucide-react';
+import { Home, Code, Zap, FileText, Mail } from 'lucide-react';
 
 interface NavigationProps {
   currentSection: number;
@@ -11,9 +11,9 @@ interface NavigationProps {
 const Navigation = ({ currentSection, setCurrentSection }: NavigationProps) => {
   const navItems = [
     { icon: Home, label: 'Home' },
-    { icon: User, label: 'About' },
     { icon: Code, label: 'Projects' },
     { icon: Zap, label: 'Skills' },
+    { icon: FileText, label: 'Resume' },
     { icon: Mail, label: 'Contact' },
   ];
 
