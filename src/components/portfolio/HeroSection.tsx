@@ -2,18 +2,32 @@
 import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Float, Text3D, Center } from '@react-three/drei';
-import { Download, ArrowDown } from 'lucide-react';
+import { OrbitControls, Float } from '@react-three/drei';
+import { Download, ExternalLink } from 'lucide-react';
 import AnimatedCube from './AnimatedCube';
 
 const HeroSection = () => {
   const downloadResume = () => {
-    // This would trigger the resume download
-    console.log('Downloading resume...');
+    // Create a dummy PDF download
+    const link = document.createElement('a');
+    link.href = 'data:application/pdf;base64,JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PAovVGl0bGUgKEFrYXNoIFYgSiAtIFJlc3VtZSk...'; // This would be your actual resume
+    link.download = 'Akash_VJ_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    console.log('Resume download initiated...');
+  };
+
+  const connectWithMe = () => {
+    // Scroll to contact section
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* 3D Background */}
       <div className="absolute inset-0 z-0">
         <Canvas camera={{ position: [0, 0, 10], fov: 60 }}>
@@ -39,16 +53,30 @@ const HeroSection = () => {
 
       {/* Hero Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+        {/* Instagram Avatar */}
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-8"
+        >
+          <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1">
+            <div className="w-full h-full rounded-full bg-white flex items-center justify-center text-4xl font-bold text-gray-800">
+              AV
+            </div>
+          </div>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 1, delay: 0.4 }}
         >
           <motion.h1
             className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
           >
             Akash V J
           </motion.h1>
@@ -56,7 +84,7 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 1 }}
           >
             <h2 className="text-2xl md:text-4xl font-light mb-8 text-white/80">
               <span className="text-purple-400">Vibe</span> Coder
@@ -67,7 +95,7 @@ const HeroSection = () => {
             className="text-lg md:text-xl text-white/70 mb-12 max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
           >
             Crafting digital experiences with code, creativity, and passion. 
             Bringing ideas to life through elegant solutions and immersive animations.
@@ -77,7 +105,7 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
           >
             <motion.button
               onClick={downloadResume}
@@ -98,28 +126,16 @@ const HeroSection = () => {
             </motion.button>
 
             <motion.button
+              onClick={connectWithMe}
               className="group px-8 py-4 border-2 border-white/30 rounded-full text-white font-semibold backdrop-blur-md hover:bg-white/10 transition-all duration-300"
               whileHover={{ scale: 1.05, borderColor: 'rgba(139, 92, 246, 0.8)' }}
               whileTap={{ scale: 0.95 }}
             >
-              Let's Connect
+              <span className="flex items-center gap-2">
+                <ExternalLink size={20} />
+                Let's Connect
+              </span>
             </motion.button>
-          </motion.div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 2 }}
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="text-white/60"
-          >
-            <ArrowDown size={24} />
           </motion.div>
         </motion.div>
       </div>

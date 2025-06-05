@@ -19,37 +19,64 @@ const Navigation = ({ currentSection, setCurrentSection }: NavigationProps) => {
 
   return (
     <motion.nav
-      initial={{ x: -100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.5 }}
-      className="fixed top-1/2 left-8 transform -translate-y-1/2 z-50"
+      className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md border-b border-white/10"
     >
-      <div className="flex flex-col space-y-6">
-        {navItems.map((item, index) => {
-          const Icon = item.icon;
-          return (
-            <motion.button
-              key={index}
-              onClick={() => setCurrentSection(index)}
-              className={`group relative p-3 rounded-full backdrop-blur-md border transition-all duration-300 ${
-                currentSection === index
-                  ? 'bg-purple-600/30 border-purple-400 text-purple-300'
-                  : 'bg-white/10 border-white/20 text-white/60 hover:bg-white/20 hover:border-white/40'
-              }`}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Icon size={20} />
-              <motion.span
-                initial={{ opacity: 0, x: -10 }}
-                whileHover={{ opacity: 1, x: 0 }}
-                className="absolute left-full ml-4 top-1/2 transform -translate-y-1/2 bg-black/80 text-white px-2 py-1 rounded text-sm whitespace-nowrap backdrop-blur-md"
+      <div className="flex items-center justify-between px-8 py-4">
+        {/* Logo */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+        >
+          AK
+        </motion.div>
+
+        {/* Navigation Items */}
+        <div className="flex items-center space-x-8">
+          {navItems.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <motion.button
+                key={index}
+                onClick={() => setCurrentSection(index)}
+                className={`group relative px-4 py-2 rounded-full transition-all duration-300 ${
+                  currentSection === index
+                    ? 'text-purple-300'
+                    : 'text-white/60 hover:text-white'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 + (index * 0.1) }}
               >
-                {item.label}
-              </motion.span>
-            </motion.button>
-          );
-        })}
+                <div className="flex items-center gap-2">
+                  <motion.div
+                    whileHover={{ rotate: 10 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Icon size={18} />
+                  </motion.div>
+                  <span className="text-sm font-medium">{item.label}</span>
+                </div>
+                
+                {/* Active indicator */}
+                {currentSection === index && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-gradient-to-r from-purple-600/30 to-pink-600/30 rounded-full border border-purple-400/50"
+                    initial={false}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
+                )}
+              </motion.button>
+            );
+          })}
+        </div>
       </div>
     </motion.nav>
   );
