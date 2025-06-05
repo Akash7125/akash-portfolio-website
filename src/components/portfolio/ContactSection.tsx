@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Send, Linkedin, Github, Twitter, Instagram, ExternalLink } from 'lucide-react';
@@ -19,8 +18,8 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      // Create a mailto link with the form data
-      const mailtoLink = `mailto:akashvj@example.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      // Create a mailto link with the form data to the correct recipient
+      const mailtoLink = `mailto:akashv22@karunya.edu.in?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )}`;
       
@@ -29,7 +28,7 @@ const ContactSection = () => {
       
       toast({
         title: "Email Client Opened!",
-        description: "Your default email client should open with the message pre-filled.",
+        description: "Your default email client should open with the message pre-filled and addressed to akashv22@karunya.edu.in.",
       });
       
       // Clear form after successful submission

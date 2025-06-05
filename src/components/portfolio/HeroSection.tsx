@@ -1,4 +1,3 @@
-
 import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
@@ -8,18 +7,13 @@ import AnimatedCube from './AnimatedCube';
 
 const HeroSection = () => {
   const downloadResume = () => {
-    // Create a dummy PDF download
-    const link = document.createElement('a');
-    link.href = 'data:application/pdf;base64,JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PAovVGl0bGUgKEFrYXNoIFYgSiAtIFJlc3VtZSk...';
-    link.download = 'Akash_VJ_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    console.log('Resume download initiated...');
+    // Open the FlowCV resume link in a new tab
+    window.open('https://flowcv.com/resume/4epiegw9o6', '_blank');
+    console.log('Resume link opened:', 'https://flowcv.com/resume/4epiegw9o6');
   };
 
   const connectWithMe = () => {
-    // Scroll to contact section (section index 4 now)
+    // Scroll to contact section (section index 4)
     const event = new CustomEvent('navigateToSection', { detail: { section: 4 } });
     window.dispatchEvent(event);
   };

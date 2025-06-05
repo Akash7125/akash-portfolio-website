@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, Briefcase, GraduationCap, Award } from 'lucide-react';
@@ -85,14 +84,9 @@ const ResumeSection = () => {
   ];
 
   const downloadResume = () => {
-    // Create a more detailed resume download
-    const link = document.createElement('a');
-    link.href = 'data:application/pdf;base64,JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PAovVGl0bGUgKEFrYXNoIFYgSiAtIFJlc3VtZSk...';
-    link.download = 'Akash_VJ_Complete_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    console.log('Complete resume download initiated...');
+    // Open the FlowCV resume link in a new tab
+    window.open('https://flowcv.com/resume/4epiegw9o6', '_blank');
+    console.log('Complete resume download initiated from FlowCV:', 'https://flowcv.com/resume/4epiegw9o6');
   };
 
   return (
@@ -128,7 +122,7 @@ const ResumeSection = () => {
             />
             <span className="relative flex items-center gap-2">
               <Download size={20} />
-              Download Complete Resume
+              View Complete Resume
             </span>
           </motion.button>
         </motion.div>
