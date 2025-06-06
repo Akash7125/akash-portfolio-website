@@ -42,45 +42,45 @@ const ResumeSection = () => {
   const education = [
     {
       degree: "Bachelor of Computer Science",
-      institution: "University of Technology",
-      duration: "2018 - 2021",
+      institution: "Karunya Institute of Technology and Sciences",
+      duration: "2022 - 2026",
       description: "Focused on software engineering, algorithms, and web development technologies.",
       grade: "First Class Honors"
     },
-    {
-      degree: "Diploma in Web Development",
-      institution: "Tech Institute",
-      duration: "2017 - 2018",
-      description: "Comprehensive program covering frontend and backend web development.",
-      grade: "Distinction"
-    }
+    // {
+    //   degree: "Diploma in Web Development",
+    //   institution: "Tech Institute",
+    //   duration: "2017 - 2018",
+    //   description: "Comprehensive program covering frontend and backend web development.",
+    //   grade: "Distinction"
+    // }
   ];
 
   const certifications = [
     {
-      name: "AWS Certified Developer",
-      issuer: "Amazon Web Services",
-      year: "2023",
+      name: "Microsoft Certified: Azure Data Fundamentals",
+      issuer: "Azure",
+      year: "2024",
       icon: Award
     },
-    {
-      name: "React Professional Developer",
-      issuer: "Meta",
-      year: "2022",
-      icon: Award
-    },
-    {
-      name: "TypeScript Expert",
-      issuer: "Microsoft",
-      year: "2022",
-      icon: Award
-    },
-    {
-      name: "Google Cloud Platform Associate",
-      issuer: "Google",
-      year: "2021",
-      icon: Award
-    }
+    // {
+    //   name: "React Professional Developer",
+    //   issuer: "Meta",
+    //   year: "2022",
+    //   icon: Award
+    // },
+    // {
+    //   name: "TypeScript Expert",
+    //   issuer: "Microsoft",
+    //   year: "2022",
+    //   icon: Award
+    // },
+    // {
+    //   name: "Google Cloud Platform Associate",
+    //   issuer: "Google",
+    //   year: "2021",
+    //   icon: Award
+    // }
   ];
 
   const downloadResume = () => {

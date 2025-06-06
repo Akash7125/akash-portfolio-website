@@ -52,11 +52,11 @@ const ContactSection = () => {
   };
 
   const socialLinks = [
-    { icon: Linkedin, label: 'LinkedIn', url: 'https://linkedin.com/in/akashvj', color: 'from-blue-500 to-blue-600' },
-    { icon: Github, label: 'GitHub', url: 'https://github.com/akashvj', color: 'from-gray-600 to-gray-700' },
-    { icon: ExternalLink, label: 'LeetCode', url: 'https://leetcode.com/akashvj', color: 'from-yellow-500 to-orange-500' },
-    { icon: Twitter, label: 'Twitter', url: 'https://twitter.com/akashvj', color: 'from-sky-400 to-sky-500' },
-    { icon: Instagram, label: 'Instagram', url: 'https://instagram.com/akashvj', color: 'from-pink-500 to-purple-500' },
+    { icon: Linkedin, label: 'LinkedIn', url: 'https://www.linkedin.com/in/akashvj7/', color: 'from-blue-500 to-blue-600' },
+    { icon: Github, label: 'GitHub', url: 'https://github.com/Akash7125', color: 'from-gray-600 to-gray-700' },
+    { icon: ExternalLink, label: 'LeetCode', url: 'https://leetcode.com/u/E8j4Rib0JQ/', color: 'from-yellow-500 to-orange-500' },
+    { icon: Twitter, label: 'Twitter', url: 'https://x.com/AkashVj75559617', color: 'from-sky-400 to-sky-500' },
+    { icon: Instagram, label: 'Instagram', url: 'https://www.instagram.com/ak._.ash._07/', color: 'from-pink-500 to-purple-500' },
   ];
 
   return (
