@@ -5,33 +5,43 @@ import { motion } from 'framer-motion';
 const SkillsSection = () => {
   const skillCategories = [
     {
-      title: "Frontend Development",
+      title: "Programming Languages",
       skills: [
-        { name: "React / Next.js", level: 95 },
-        { name: "TypeScript", level: 90 },
-        { name: "Tailwind CSS", level: 95 },
-        { name: "Framer Motion", level: 85 },
-        { name: "Three.js", level: 80 }
+        { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+        { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+        { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+        { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+        { name: "C++", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" }
       ]
     },
     {
-      title: "Backend Development",
+      title: "Frameworks & Libraries",
       skills: [
-        { name: "Node.js", level: 88 },
-        { name: "Python", level: 85 },
-        { name: "PostgreSQL", level: 82 },
-        { name: "MongoDB", level: 80 },
-        { name: "GraphQL", level: 75 }
+        { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+        { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+        { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+        { name: "Express", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
+        { name: "Three.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" }
       ]
     },
     {
       title: "Tools & Technologies",
       skills: [
-        { name: "Git / GitHub", level: 95 },
-        { name: "Docker", level: 80 },
-        { name: "AWS", level: 75 },
-        { name: "Figma", level: 85 },
-        { name: "VS Code", level: 98 }
+        { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+        { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+        { name: "AWS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" },
+        { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+        { name: "PostgreSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" }
+      ]
+    },
+    {
+      title: "Design & Styling",
+      skills: [
+        { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" },
+        { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+        { name: "CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+        { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+        { name: "Framer Motion", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/framermotion/framermotion-original.svg" }
       ]
     }
   ];
@@ -46,14 +56,14 @@ const SkillsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Skills & Expertise
+            Skills & Technologies
           </h2>
           <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
-            A comprehensive toolkit built through years of passionate learning and hands-on experience.
+            My arsenal of tools, languages, and technologies for building modern web applications.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={categoryIndex}
@@ -64,27 +74,30 @@ const SkillsSection = () => {
             >
               <h3 className="text-xl font-bold text-white mb-6 text-center">{category.title}</h3>
               
-              <div className="space-y-4">
+              <div className="grid grid-cols-3 sm:grid-cols-5 gap-4">
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div
                     key={skillIndex}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6, delay: (categoryIndex * 0.2) + (skillIndex * 0.1) }}
+                    className="flex flex-col items-center justify-center p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group"
+                    whileHover={{ scale: 1.05, y: -5 }}
                   >
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-white text-sm font-medium">{skill.name}</span>
-                      <span className="text-purple-400 text-sm">{skill.level}%</span>
-                    </div>
-                    
-                    <div className="w-full bg-white/10 rounded-full h-2 overflow-hidden">
-                      <motion.div
-                        className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
-                        initial={{ width: 0 }}
-                        animate={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1.5, delay: (categoryIndex * 0.2) + (skillIndex * 0.1) + 0.5, ease: "easeInOut" }}
+                    <div className="w-12 h-12 mb-2 flex items-center justify-center">
+                      <img 
+                        src={skill.logo} 
+                        alt={skill.name}
+                        className="w-full h-full object-contain filter brightness-0 invert group-hover:filter-none transition-all duration-300"
+                        onError={(e) => {
+                          // Fallback to a simple icon if logo fails to load
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.parentElement!.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center text-white font-bold text-xs">${skill.name.slice(0, 2)}</div>`;
+                        }}
                       />
                     </div>
+                    <span className="text-white text-xs font-medium text-center leading-tight">{skill.name}</span>
                   </motion.div>
                 ))}
               </div>
