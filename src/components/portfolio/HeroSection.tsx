@@ -1,3 +1,4 @@
+
 import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
@@ -54,9 +55,9 @@ const HeroSection = () => {
         >
           <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1">
             <img
-              src="/lovable-uploads/b87ac518-efec-4598-bf7f-4a96cd628ab6.png"
+              src="/lovable-uploads/a1578711-f52d-41fe-bd36-2182bc8b5ee0.png"
               alt="Akash V J"
-              className="w-full h-full rounded-full object-cover"
+              className="w-full h-full rounded-full object-cover object-center"
             />
           </div>
         </motion.div>
