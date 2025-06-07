@@ -1,8 +1,15 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Send, Linkedin, Github, Twitter, Instagram, ExternalLink } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
+
+// EmailJS configuration
+const EMAILJS_CONFIG = {
+  SERVICE_ID: 'service_ax7uo2o',
+  TEMPLATE_ID: 'template_6zqiy84',
+  PUBLIC_KEY: 'Fkg3cBjn8O0zfpzld',
+};
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -19,25 +26,39 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      // Create a mailto link with the form data to the correct recipient
-      const mailtoLink = `mailto:vjakashcbe@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )}`;
-      
-      // Open the default email client
-      window.location.href = mailtoLink;
-      
-      toast({
-        title: "Email Client Opened!",
-        description: "Your default email client should open with the message pre-filled and addressed to vjakashcbe@gmail.com.",
-      });
-      
-      // Clear form after successful submission
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'vjakashcbe@gmail.com'
+      };
+
+      // Initialize EmailJS with your public key
+      emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+
+      const response = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams
+      );
+
+      if (response.status === 200) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for reaching out. I'll get back to you soon!",
+        });
+        
+        // Clear form after successful submission
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Failed to send email');
+      }
     } catch (error) {
+      console.error('Error sending email:', error);
       toast({
         title: "Error",
-        description: "Failed to open email client. Please try again.",
+        description: "Failed to send message. Please try again or contact me directly at vjakashcbe@gmail.com",
         variant: "destructive",
       });
     } finally {
